@@ -1,43 +1,23 @@
-const merge = require('webpack-merge');
-const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const common = require('./webpack.common');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const Terser = require('terser-webpack-plugin');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'development',
-
+  mode: 'production',
   output: {
-    filename: '[name].js',
-    chunkFilename: '[id].css'
+    filename: '[name].[hash:5].js',
+    chunkFilename: '[id].[hash:5].css',
   },
-
-  devtool: 'cheap-module-eval-source-map',
-
-  devServer: {
-    port: process.env.PORT || 3000,
-    contentBase: path.join(process.cwd(), './public'),
-    watchContentBase: true,
-    stats: 'none',
-    quiet: false,
-    open: true,
-    historyApiFallback: {
-      rewrites: [{ from: /./, to: '404.html' }]
-    }
-  },
-
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        path.join(__dirname, 'public', '*.js'),
-        path.join(__dirname, 'public', '*.css')
-      ]
-    }),
-
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
-  ]
-});
+  optimization: {
+    minimizer: [
+      new Terser(),
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash:5].css',
+        chunkFilename: '[id].[hash:5].css',
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  }
+})

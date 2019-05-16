@@ -2,14 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const AssetsPlugin = require('assets-webpack-plugin');
 const LessLists = require('less-plugin-lists');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
-
   entry: {
     main: path.join(__dirname, 'src', 'app.js')
   },
@@ -75,6 +70,6 @@ module.exports = {
     new htmlWebpackPlugin({
       filename: 'index.html',
       template: './src/template.html'
-  })
+    })
   ]
 };
