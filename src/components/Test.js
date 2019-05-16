@@ -1,17 +1,10 @@
 import React from 'react'
 
 const Test = () => {
-  const name = 'Lex'
-  const obj = {
-    one: 'one',
-    two: 'two',
-  }
-
-  console.log('Hello')
-
+  const name = 'Poodle'
   return (
     <div>
-      name:
+      <img src="./images/poodle.jpg" alt="" />
       <h1>{name}</h1>
     </div>
   )
