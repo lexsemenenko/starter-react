@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import classNames from 'classnames'
-import CollapsibleToggle from './CollapsibleToggle'
-import CollapsibleContent from './CollapsibleContent'
+import Collapsible from './Collapsible'
 
 const CollapsibleList = props => {
   const {children} = props
@@ -37,7 +36,7 @@ const CollapsibleList = props => {
 
         return (
           <div className={`collapsible ${isActive ? 'open' : 'closed'}`}>
-            <CollapsibleToggle
+            <Collapsible
               id={id}
               label={label}
               isActive={isActive}
