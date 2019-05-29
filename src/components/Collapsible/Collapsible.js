@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-const CollapsibleToggle = props => {
+const Collapsible = props => {
   const {label, id, isActive, onChangeActive, className, content} = props
   const classes = classNames({open: isActive}, 'collapsible')
   return (
@@ -23,18 +23,18 @@ const CollapsibleToggle = props => {
   )
 }
 
-CollapsibleToggle.propTypes = {
+Collapsible.propTypes = {
   content: PropTypes.node,
   label: PropTypes.string,
   id: PropTypes.string,
   isActive: PropTypes.bool,
 }
 
-CollapsibleToggle.defaultProps = {
+Collapsible.defaultProps = {
   content: null,
   label: PropTypes.string,
   id: ``,
   isActive: false,
 }
 
-export default CollapsibleToggle
+export default Collapsible

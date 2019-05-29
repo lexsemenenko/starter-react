@@ -28,28 +28,22 @@ const CollapsibleList = props => {
       return newobj
     }
     setState(updateState())
-    // console.log(state)
   }
 
   return (
     <div className="collapsible-list">
-      {Object.keys(state).map(item => {
-        const {id, children, isActive} = state[item]
+      {Object.keys(state).map((item, i) => {
+        const {id, children, isActive, label} = state[item]
 
         return (
           <div className={`collapsible ${isActive ? 'open' : 'closed'}`}>
             <CollapsibleToggle
               id={id}
-              title={children}
+              label={label}
               isActive={isActive}
-              className="collapsible__toggle"
+              className="collapsible"
               onChangeActive={handleClick}
-            />
-            <CollapsibleContent
-              id={id}
               content={children}
-              isActive={isActive}
-              className="collapsible__content"
             />
           </div>
         )
