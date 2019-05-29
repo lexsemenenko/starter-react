@@ -2,12 +2,12 @@ module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-preset-env': {
-      browsers: [browsersYearsBack(10), 'not dead']
+      browsers: [browsersYearsBack(10), 'not dead'],
     },
-    autoprefixer: {}
-  }
-};
+    autoprefixer: {},
+  },
+}
 
 function browsersYearsBack(years) {
-  return `since ${new Date().getFullYear() - years || '2010'}`;
+  return `since ${new Date().getFullYear() - years || '2010'}`
 }
